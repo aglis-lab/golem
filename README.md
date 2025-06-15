@@ -32,23 +32,6 @@ Traditional Go frameworks leave too much up to you — routing, database setup, 
 
 ---
 
-## 🏗 Project Structure
-
-my-app/
-├── app/
-│ ├── routes/ # Go route handlers and loader functions
-│ ├── models/ # Database models (auto-migrated)
-│ ├── views/ # JSX/TSX components for frontend
-│ └── assets/ # Static files
-├── frontend/ # React app (Vite or Bun)
-│ ├── routes/ # React Router route components
-│ └── entry.tsx # Hydration entry point
-├── golem.config.json # Shared route metadata between Go ↔ React
-├── go.mod
-└── main.go
-
----
-
 ## 🚀 Quickstart
 
 ### 1. Install Golem CLI
@@ -102,7 +85,7 @@ var Dashboard = Route{
 frontend/routes/dashboard.tsx
 
 ```tsx
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData } from "golem/loader";
 
 export default function Dashboard() {
   const { username, messages } = useLoaderData() as {
@@ -160,14 +143,6 @@ You can use either:
 - **Bun**: Use with golem dev --bun
 - **Custom**: Just hook into the loader JSON injection + hydration
 
-## 🧩 Advanced Plans
-
-- [ ] Nested loader hydration
-- [ ] HMR with DB/model reload
-- [ ] GraphQL or RPC integration (optional)
-- [ ] File-system based routes
-- [ ] Plugin system for auth, queue, mail, etc
-
 ## 👥 Community
 
 We’re building Golem for developers who love speed and clarity. Whether you're a Go backend dev, a React enthusiast, or someone who just wants one tool that just works — you're welcome here.
@@ -190,3 +165,51 @@ Let me know if you want:
 
 Or if you want to rebrand again — just say the word.
 ```
+
+# Features
+
+## Generated Project Structure
+
+```
+- cmd
+  - [app-name]
+    - main.go
+- src
+  - app
+  - entity
+  - middleware
+  - repository
+  - response
+  - [v1]
+    - contract
+      - [contracts]
+    - handler
+      - [handlers]
+    - service
+      - [services]
+    - router
+- views
+  - assets
+    - [assets]
+  - components
+    - [components]
+  - pages
+    - [pages]
+```
+
+## Cli
+
+- [ ] Run both server and views
+- [ ] Generate Project Structure
+- [ ] Generate mock data
+
+## 🧩 Advanced Plans
+
+- [ ] Tracer
+- [ ] Go pass data
+- [ ]
+- [ ] Nested loader hydration
+- [ ] HMR with DB/model reload
+- [ ] GraphQL or RPC integration (optional)
+- [ ] File-system based routes
+- [ ] Plugin system for auth, queue, mail, etc
