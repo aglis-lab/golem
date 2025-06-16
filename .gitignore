@@ -1,5 +1,5 @@
-/tmp
-/data
+/temp/
+/data/
 .env
 
 /node_modules/
